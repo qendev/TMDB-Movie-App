@@ -11,13 +11,13 @@ import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentBBinding
 import com.example.movieapp.model.Movie
 import com.example.movieapp.ui.activities.DetailsActivity
-import com.example.movieapp.ui.adapters.Trending_Adapter
+import com.example.movieapp.ui.adapters.TrendingAdapter
 import com.example.movieapp.viewmodel.MovieViewModel
 
-class FragmentB(): Fragment(R.layout.fragment_b), Trending_Adapter.TrendingAdapterOnClickHandler {
+class FragmentB(): Fragment(R.layout.fragment_b), TrendingAdapter.TrendingAdapterOnClickHandler {
 
     private var binding: FragmentBBinding? = null
-    private lateinit var trendingadapter: Trending_Adapter
+    private lateinit var trendingadapter: TrendingAdapter
     private val viewmodel: MovieViewModel by viewModels()
 
     override fun onCreateView(

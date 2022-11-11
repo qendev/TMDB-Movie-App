@@ -19,18 +19,18 @@ import com.example.movieapp.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FragmentA(): Fragment(R.layout.fragment_a), Top_rated_Adapter.TopratedAdapterOnClickHandler,
-Now_playing_Adapter.NowplayingAdapterOnClickHandler,
-Trending_Adapter.TrendingAdapterOnClickHandler, Popular_Adapter.PopularAdapterOnClickHandler,
-Upcoming_Adapter.UpcomingAdapterOnClickHandler , Tv_Adapter.Tv_AdapterOnclickHandler {
+class FragmentA(): Fragment(R.layout.fragment_a), TopRatedAdapter.TopratedAdapterOnClickHandler,
+NowPlayingAdapter.NowplayingAdapterOnClickHandler,
+TrendingAdapter.TrendingAdapterOnClickHandler, PopularAdapter.PopularAdapterOnClickHandler,
+UpcomingAdapter.UpcomingAdapterOnClickHandler , TvAdapter.Tv_AdapterOnclickHandler {
 
     private var binding: FragmentABinding? = null
-    private lateinit var padapter: Popular_Adapter
-    private lateinit var uadapter: Upcoming_Adapter
-    private lateinit var tadapter: Top_rated_Adapter
-    private lateinit var nadapter: Now_playing_Adapter
-    private lateinit var tvadapter: Tv_Adapter
-    private lateinit var trendingadapter: Trending_Adapter
+    private lateinit var padapter: PopularAdapter
+    private lateinit var uadapter: UpcomingAdapter
+    private lateinit var tadapter: TopRatedAdapter
+    private lateinit var nadapter: NowPlayingAdapter
+    private lateinit var tvadapter: TvAdapter
+    private lateinit var trendingadapter: TrendingAdapter
     private val viewmodel: MovieViewModel by viewModels()
 
 
@@ -55,69 +55,69 @@ Upcoming_Adapter.UpcomingAdapterOnClickHandler , Tv_Adapter.Tv_AdapterOnclickHan
     private fun init_recyclerview() {
         binding?.p?.apply {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
-            trendingadapter = Trending_Adapter(this@FragmentA)
+            trendingadapter = TrendingAdapter(this@FragmentA)
             adapter = trendingadapter
         }
 
         binding?.u?.apply {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
-            padapter = Popular_Adapter(this@FragmentA)
+            padapter = PopularAdapter(this@FragmentA)
             adapter = padapter
         }
         binding?.u2?.apply {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
-            nadapter = Now_playing_Adapter(this@FragmentA)
+            nadapter = NowPlayingAdapter(this@FragmentA)
             adapter = nadapter
         }
 
         binding?.u3?.apply {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
-            uadapter = Upcoming_Adapter(this@FragmentA)
+            uadapter = UpcomingAdapter(this@FragmentA)
             adapter = uadapter
         }
         binding?.u4?.apply {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
-            tadapter = Top_rated_Adapter(this@FragmentA)
+            tadapter = TopRatedAdapter(this@FragmentA)
             adapter = tadapter
         }
         binding?.u5?.apply {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
-            tvadapter = Tv_Adapter(this@FragmentA)
+            tvadapter = TvAdapter(this@FragmentA)
             adapter = tvadapter
         }
 
     }
 
     private fun adddataset() {
-        Log.i("@@@@@", "CALLING ADAPTER")
-        viewmodel._trending.observe(viewLifecycleOwner) { Movies ->
+        Log.i("@@@@@", "CALLIG ADAPTER")
+        viewmodel._trending.observe(viewLifecycleOwner, { Movies ->
 //            binding?.progress?.visibility=View.VISIBLE
             trendingadapter.submitlist(Movies)
             binding?.trending?.visibility = View.VISIBLE
-            binding?.trending1?.visibility = View.VISIBLE
-        }
-        viewmodel._Popular.observe(viewLifecycleOwner) { Movies ->
+            binding?.trending1?.visibility=View.VISIBLE
+        })
+        viewmodel._Popular.observe(viewLifecycleOwner, { Movies ->
             padapter.submitlist(Movies)
             binding?.popularT?.visibility = View.VISIBLE
             binding?.popular1?.visibility = View.VISIBLE
 
-        }
-        viewmodel._topRated.observe(viewLifecycleOwner) { Movies ->
+        })
+        viewmodel._topRated.observe(viewLifecycleOwner, { Movies ->
             tadapter.setToprateddata(Movies)
             binding?.topratedT?.visibility = View.VISIBLE
-        }
-        viewmodel._upComing.observe(viewLifecycleOwner) { Movies ->
+        })
+        viewmodel._upComing.observe(viewLifecycleOwner, { Movies ->
             uadapter.setUpcomingdata(Movies)
             binding?.upcomingT?.visibility = View.VISIBLE
-        }
-        viewmodel._nowPlaying.observe(viewLifecycleOwner) { Movies ->
+        })
+        viewmodel._nowPlaying.observe(viewLifecycleOwner, { Movies ->
             nadapter.submitlist(Movies)
             binding?.nowPlaying?.visibility = View.VISIBLE
-        }
-        viewmodel._tv.observe(viewLifecycleOwner) { Movies ->
+        })
+        viewmodel._tv.observe(viewLifecycleOwner, { Movies ->
             tvadapter.submitlist(Movies)
             binding?.tv?.visibility = View.VISIBLE
-        }
+        })
 
     }
 

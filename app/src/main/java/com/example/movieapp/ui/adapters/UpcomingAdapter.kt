@@ -12,10 +12,10 @@ import com.example.movieapp.R
 import com.example.movieapp.model.Movie
 import com.squareup.picasso.Picasso
 
-class Upcoming_Adapter(
+class UpcomingAdapter(
     private var clickhandler: UpcomingAdapterOnClickHandler,
 ) :
-    RecyclerView.Adapter<Upcoming_Adapter.UpcomingAdapterViewHolder>() {
+    RecyclerView.Adapter<UpcomingAdapter.UpcomingAdapterViewHolder>() {
     private var movies: List<Movie>? = null
     private var mClickHandler: UpcomingAdapterOnClickHandler? = null
 

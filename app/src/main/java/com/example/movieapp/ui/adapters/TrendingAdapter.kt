@@ -11,7 +11,7 @@ import com.example.movieapp.R
 import com.example.movieapp.model.Movie
 import com.squareup.picasso.Picasso
 
-class Trending_Adapter(private  var clickhandler:TrendingAdapterOnClickHandler): RecyclerView.Adapter<Trending_Adapter.customviewholder>() {
+class TrendingAdapter(private  var clickhandler:TrendingAdapterOnClickHandler): RecyclerView.Adapter<TrendingAdapter.customviewholder>() {
     private var items: List<Movie> = ArrayList()
     private var mClickHandler: TrendingAdapterOnClickHandler?= null
 

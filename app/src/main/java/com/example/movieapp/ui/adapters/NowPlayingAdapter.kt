@@ -11,25 +11,16 @@ import com.example.movieapp.R
 import com.example.movieapp.model.Movie
 import com.squareup.picasso.Picasso
 
-class Popular_Adapter(private var clickhandler:PopularAdapterOnClickHandler) : RecyclerView.Adapter<Popular_Adapter.customviewholderP>() {
+class NowPlayingAdapter(
+    clickhandler: NowplayingAdapterOnClickHandler
+) : RecyclerView.Adapter<NowPlayingAdapter.custoviewgolder>() {
     private var items: List<Movie> = ArrayList()
-    private var mClickHandler: PopularAdapterOnClickHandler? = null
-
-    init {
+    private var mClickHandler: NowplayingAdapterOnClickHandler? = null
+    init{
         mClickHandler=clickhandler
     }
-
-    interface PopularAdapterOnClickHandler {
-        fun onClickp(m: Movie?)
-    }
-
-    override fun onBindViewHolder(holder: customviewholderP, position: Int) {
-        when (holder){
-            is customviewholderP ->{
-                Log.i("@@@@@","ON BIND VIEW HOLDER")
-                holder.bind(items.get(position))
-            }
-        }
+    interface NowplayingAdapterOnClickHandler {
+        fun onClickN(m: Movie?)
     }
 
     override fun getItemCount(): Int {
@@ -37,10 +28,10 @@ class Popular_Adapter(private var clickhandler:PopularAdapterOnClickHandler) : R
         return items.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): customviewholderP {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): custoviewgolder {
         Log.i("@@@@@","ON CREATE VIEW HOLDER")
-        return customviewholderP(
-            LayoutInflater.from(parent.context).inflate(R.layout.popular,parent,false)
+        return custoviewgolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.now_playing,parent,false)
         )
     }
     fun submitlist(list:List<Movie>){
@@ -49,11 +40,11 @@ class Popular_Adapter(private var clickhandler:PopularAdapterOnClickHandler) : R
         notifyDataSetChanged()
     }
 
-    inner class customviewholderP constructor(
+    inner class custoviewgolder constructor(
         itemView: View
-    ) : RecyclerView.ViewHolder(itemView) , View.OnClickListener {
-        val blog_image: ImageView = itemView.findViewById<ImageView>(R.id.blog_image)
-        val blog_title: TextView = itemView.findViewById<View>(R.id.Title) as TextView
+    ) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        val blog_image: ImageView = itemView.findViewById<ImageView>(R.id.blog_image_n)
+        val blog_title: TextView = itemView.findViewById<View>(R.id.Title_n) as TextView
         val blog_rate: TextView = itemView.findViewById<View>(R.id.rate) as TextView
 
         fun bind(blogpost: Movie) {
@@ -64,10 +55,19 @@ class Popular_Adapter(private var clickhandler:PopularAdapterOnClickHandler) : R
         }
 
         override fun onClick(v: View?) {
-            mClickHandler?.onClickp(items.get(adapterPosition))
+            mClickHandler?.onClickN(items.get(adapterPosition))
         }
         init{
             itemView.setOnClickListener(this)
+        }
+    }
+
+    override fun onBindViewHolder(holder: custoviewgolder, position: Int) {
+        when (holder){
+            is custoviewgolder ->{
+                Log.i("@@@@@","ON BIND VIEW HOLDER")
+                holder.bind(items.get(position))
+            }
         }
     }
 }

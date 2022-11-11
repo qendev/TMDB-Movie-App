@@ -13,8 +13,8 @@ import com.example.movieapp.model.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.popular.view.*
 
-class Top_rated_Adapter(private var clickhandler:TopratedAdapterOnClickHandler) :
-    RecyclerView.Adapter<Top_rated_Adapter.TopratedAdapterViewHolder>() {
+class TopRatedAdapter(private var clickhandler:TopratedAdapterOnClickHandler) :
+    RecyclerView.Adapter<TopRatedAdapter.TopratedAdapterViewHolder>() {
 
     private var movies: List<Movie>? = null
     private var mClickHandler: TopratedAdapterOnClickHandler? = null

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Movie App</string>
+    <string name="appLabel">Movies</string>
+
 
     <string name="Label">Genre</string>
     <string name="Key">genre</string>

@@ -1,14 +1,12 @@
 package com.example.movieapp.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
-import com.example.movieapp.ui.adapters.Image_Adapter
+import com.example.movieapp.ui.adapters.ImageAdapter
 
 class ImageActivity: AppCompatActivity() {
 
@@ -20,7 +18,7 @@ class ImageActivity: AppCompatActivity() {
         setContentView(R.layout.image_activity)
         rv = findViewById<View>(R.id.recyclerview_image) as RecyclerView
         val intent = intent
-        val c = Image_Adapter(this)
+        val c = ImageAdapter(this)
 
 
         val gridLayoutManager =

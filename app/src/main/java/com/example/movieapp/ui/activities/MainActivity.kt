@@ -16,7 +16,9 @@ import com.example.movieapp.ui.fragments.FragmentA
 import com.example.movieapp.ui.fragments.FragmentB
 import com.example.movieapp.ui.fragments.FragmentC
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bn: BottomNavigationView

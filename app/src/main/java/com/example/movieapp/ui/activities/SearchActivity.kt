@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.example.movieapp.model.Movie
-import com.example.movieapp.ui.adapters.Trending_Adapter
+import com.example.movieapp.ui.adapters.TrendingAdapter
 import com.example.movieapp.viewmodel.TrailerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SearchActivity: AppCompatActivity(), Trending_Adapter.TrendingAdapterOnClickHandler {
+class SearchActivity: AppCompatActivity(), TrendingAdapter.TrendingAdapterOnClickHandler {
 
-    private lateinit var trendingadapter: Trending_Adapter
+    private lateinit var trendingadapter: TrendingAdapter
     private val viewmodel: TrailerViewModel by viewModels()
 
 
@@ -44,7 +44,7 @@ class SearchActivity: AppCompatActivity(), Trending_Adapter.TrendingAdapterOnCli
     private fun init_recyclerview() {
         val r = findViewById<RecyclerView>(R.id.search_recyclerview)
         r.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        trendingadapter = Trending_Adapter(this)
+        trendingadapter = TrendingAdapter(this)
         r.adapter = trendingadapter
     }
 

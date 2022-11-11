@@ -11,7 +11,7 @@ import com.example.movieapp.R
 import com.example.movieapp.model.Movie
 import com.squareup.picasso.Picasso
 
-class Tv_Adapter(
+class TvAdapter(
     private var clickhandler: Tv_AdapterOnclickHandler,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items: List<Movie> = ArrayList()

@@ -1,7 +1,6 @@
 package com.example.movieapp.ui.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.squareup.picasso.Picasso
 
-class Image_Adapter(
+class ImageAdapter(
     c: Context,
 //    images: List<String>,
-) : RecyclerView.Adapter<Image_Adapter.MyViewHolder>() {
+) : RecyclerView.Adapter<ImageAdapter.MyViewHolder>() {
     private var ls: List<String> = ArrayList()
     private var context: Context? = null
 

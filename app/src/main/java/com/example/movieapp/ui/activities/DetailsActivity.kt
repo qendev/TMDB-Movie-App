@@ -21,17 +21,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.example.movieapp.databinding.ActivityDetailsBinding
 import com.example.movieapp.model.Movie
-import com.example.movieapp.ui.adapters.Trending_Adapter
+import com.example.movieapp.ui.adapters.TrendingAdapter
 import com.example.movieapp.viewmodel.MovieDetailsViewModel
 import com.example.movieapp.viewmodel.SimilarMoviesViewModel
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.ArrayList
 
-
-class DetailsActivity: AppCompatActivity(), Trending_Adapter.TrendingAdapterOnClickHandler{
+@AndroidEntryPoint
+class DetailsActivity: AppCompatActivity(), TrendingAdapter.TrendingAdapterOnClickHandler{
 
     private val list: List<String> = ArrayList()
     var Titled: String? = null
@@ -44,7 +45,7 @@ class DetailsActivity: AppCompatActivity(), Trending_Adapter.TrendingAdapterOnCl
     lateinit var viewmodel: MovieDetailsViewModel
     private var flag: Int? = null
     private lateinit var t1: Toast
-    private lateinit var trendingadapter: Trending_Adapter
+    private lateinit var trendingadapter: TrendingAdapter
     private val viewmodels: SimilarMoviesViewModel by viewModels()
 
     @SuppressLint("SetTextI18n")
@@ -158,7 +159,7 @@ class DetailsActivity: AppCompatActivity(), Trending_Adapter.TrendingAdapterOnCl
         binding.recyclerviewSimilar.apply {
             layoutManager =
                 LinearLayoutManager(this@DetailsActivity, RecyclerView.HORIZONTAL, false)
-            trendingadapter = Trending_Adapter(this@DetailsActivity)
+            trendingadapter = TrendingAdapter(this@DetailsActivity)
             adapter = trendingadapter
         }
         viewmodels.getSimilarMovies(movieidd)
